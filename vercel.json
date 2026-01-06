@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "alias": "asymmetrylab.com",
+  "regions": ["iad1"],
+  "public": true
+}

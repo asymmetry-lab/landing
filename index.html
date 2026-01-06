@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Asymmetry Lab — Exploiting Market Inefficiencies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <meta name="description" content="Asymmetry Lab builds micro-products by exploiting market inefficiencies and small advantages others miss." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Asymmetry Lab — Exploiting Market Inefficiencies" />
+  <meta property="og:description" content="We research market distortions, build micro‑products, and exploit hidden opportunities." />
+  <meta property="og:image" content="logo-complex.jpg" />
+  <meta property="og:url" content="https://asymmetrylab.com" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="logo-simple.jpg" type="image/jpeg" />
+
+  <style>
+    :root {
+      --bg: #0b0e14;
+      --bg-soft: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+
+      --blue: #2dd4ff;
+      --purple: #7c3aed;
+      --orange: #fb923c;
+
+      --accent-gradient: linear-gradient(
+        135deg,
+        var(--blue),
+        var(--purple),
+        var(--orange)
+      );
+    }
+
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(1200px 600px at 10% 10%, #111827, transparent),
+                  radial-gradient(1000px 500px at 90% 20%, #020617, transparent),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 48px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand img {
+      height: 42px;
+      width: auto;
+    }
+
+    .brand span {
+      font-size: 20px;
+    }
+
+    nav a {
+      margin-left: 24px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding: 64px 0 96px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.1;
+      margin: 0 0 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .gradient-text {
+      background: var(--accent-gradient);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient-shift 8s ease infinite;
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      color: var(--muted);
+      margin: -5px 0 24px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    .hero-actions {
+      margin-top: 32px;
+      display: flex;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent-gradient);
+      color: #020617;
+      box-shadow: 0 10px 30px rgba(124, 58, 237, 0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid #1f2937;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      max-width: 420px;
+      filter: drop-shadow(0 30px 60px rgba(0,0,0,0.6));
+    }
+
+    /* Philosophy */
+    .section {
+      padding: 96px 0;
+    }
+
+    .section h2 {
+      font-size: 36px;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .section p.lead {
+      max-width: 640px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #0b1220, #060913);
+      border: 1px solid #111827;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(45, 212, 255, 0.05), 0 5px 15px rgba(124, 58, 237, 0.05);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(400px 200px at 0% 0%, rgba(45,212,255,0.08), transparent);
+      pointer-events: none;
+      transition: background 0.3s ease;
+    }
+
+    .card:hover::before {
+      background: radial-gradient(400px 200px at 0% 0%, rgba(45,212,255,0.15), transparent);
+    }
+
+    .card:hover {
+      box-shadow: 0 15px 40px rgba(45, 212, 255, 0.08), 0 8px 20px rgba(124, 58, 237, 0.08);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 64px 0 32px;
+      border-top: 1px solid #111827;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <img src="logo-simple.jpg" alt="Asymmetry Lab Logo" />
+        <span>Asymmetry Lab</span>
+      </div>
+
+      <nav>
+        <a href="#philosophy">Philosophy</a>
+        <a href="#opportunities">Opportunities</a>
+        <a href="#approach">Approach</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <h1>
+          <span class="gradient-text">Asymmetry Lab</span>
+        </h1>
+        <p class="hero-subtitle">
+          Exploiting Market Inefficiencies · Products Built on Small Advantages · Discovering What Others Miss
+        </p>
+
+        <p>
+          We research market distortions, build micro‑products, and exploit hidden opportunities.
+          Our intellectual, research‑driven approach reveals what others miss.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary">Explore Our Work</button>
+          <button class="btn btn-secondary">Get in Touch</button>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img src="logo-complex.jpg" alt="Asymmetry Lab Abstract Mark" />
+      </div>
+    </section>
+
+    <!-- Philosophy -->
+    <section id="philosophy" class="section">
+      <h2>We See What Others Miss</h2>
+      <p class="lead">
+        We research market distortions, micro‑products, and hidden opportunities.
+        Value hides in asymmetries — in blind spots, friction, and ignored niches.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Market Asymmetry</h3>
+          <p>
+            We study uneven information, incentives, and constraints
+            to uncover non-obvious opportunities.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Micro-Products</h3>
+          <p>
+            Small, sharp tools built around a single advantage —
+            fast to ship, easy to validate, hard to copy.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Research First</h3>
+          <p>
+            Exploration precedes execution. We test hypotheses before
+            committing to scale.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hidden Opportunities -->
+    <section id="opportunities" class="section">
+      <h2>Hidden Opportunities</h2>
+      <p class="lead">
+        We exploit overlooked asymmetries and hidden possibilities that others miss.
+        Our research uncovers value in friction, information gaps, and systemic blind spots.
+      </p>
+      <div class="cards">
+        <div class="card">
+          <h3>Friction as Advantage</h3>
+          <p>
+            Where others see obstacles, we see opportunities. Friction creates defensibility.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Information Gaps</h3>
+          <p>
+            Asymmetric information is a source of alpha. We identify and bridge these gaps.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Systemic Blind Spots</h3>
+          <p>
+            Large players overlook niche segments. We build micro‑products for underserved edges.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Approach -->
+    <section id="approach" class="section">
+      <h2>Our Approach</h2>
+      <p class="lead">
+        Asymmetry Lab operates at the intersection of analysis,
+        experimentation, and product engineering.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Signal Hunting</h3>
+          <p>
+            We analyze weak signals, edge cases, and anomalies
+            ignored by mainstream solutions.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Fast Validation</h3>
+          <p>
+            Prototypes over presentations. Real users over assumptions.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Compounding Advantages</h3>
+          <p>
+            Small edges stack. Over time, asymmetry becomes leverage.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="footer-inner">
+        <div>
+          <strong>Asymmetry Lab</strong><br />
+          Discovering What Others Miss
+        </div>
+
+        <div>
+          © <span id="year"></span> Asymmetry Lab
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+

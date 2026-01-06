@@ -1,0 +1,30 @@
+{
+  "name": "asymmetrylab-landing",
+  "version": "1.0.0",
+  "description": "Asymmetry Lab landing page - research-driven product studio exploiting market inefficiencies",
+  "main": "index.html",
+  "scripts": {
+    "dev": "echo 'Static site - open index.html directly'",
+    "build": "echo 'No build step required for static site'",
+    "start": "echo 'Static site - open index.html directly'"
+  },
+  "keywords": [
+    "asymmetry",
+    "market-inefficiencies",
+    "micro-products",
+    "landing-page"
+  ],
+  "author": "Asymmetry Lab",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=18.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asymmetrylab/landing.git"
+  },
+  "bugs": {
+    "url": "https://github.com/asymmetrylab/landing/issues"
+  },
+  "homepage": "https://asymmetrylab.com"
+}
